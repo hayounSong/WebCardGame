@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <form action="" method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="form_table">
+            <div>
+                <div><span>내가 고른 카드: </span>{{ form.attack_num }}</div>
+                <div><span>공격할 상대는? </span>{{ form.defense_user }}</div>
+            </div>
+        </table>
+        <div class="save_button">
+            <input class="submit " type="submit" value='공격하기!'>
+        </div>
+    </form>
+</div>
+{% endblock%}

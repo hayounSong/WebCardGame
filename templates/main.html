@@ -4,7 +4,7 @@
 <img src="{% static 'src/main.png' %}" style="width: 50vh;">
 <h1>전 세계 피로그래머와 한 판 승부 숫자카드게임</h1>
 {% if request.user.is_authenticated %}
-<a href="#">게임하기</a>
+<a href="{% url 'cardgame:attack_game'%}">게임하기</a>
 <a href="{% url 'cardgame:list_game'%}">전적보기</a>
 {% else %}
 <a href="{% url 'cardgame:login'%}">게임하기</a>
