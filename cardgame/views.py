@@ -2,6 +2,14 @@ from django.shortcuts import render, redirect
 from .models import *
 
 # Create your views here.
+def main(request):
+    user = request.user
+    ctx = {
+        'user' : user
+    }
+    return render(request, 'main.html', ctx)
+
+
 def list_game(request):
     if request.user.is_authenticated:
         # 현재 로그인한 유저가 속하는 게임들
