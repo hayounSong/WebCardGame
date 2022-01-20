@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="games__container">
+    <h2>::진행중인 게임</h2>
+    <div class="proceed_games__container">
+        {% for game in proceed_games %}
+        <div class="proceed_game__container">
+            <span>{{game.attack.attack_user.username}}<p>VS</p>{{game.defense.defense_user.username}}</span>
+            {% if game.attack.attack_user.username == current_user.username %}
+            <a href="{% url 'cardgame:delete_game' pk=game.id%}">공격 취소</a>
+            {% elif game.defense.defense_user.username == current_user.username %}
+            <a href="#">반격하기</a>
+            {% endif %}
+            <a href="#">게임 정보</a>
+        </div>
+        {% endfor %}
+    </div>
+    <h2>:: 게임 전적</h2>
+    <div class="end_games__container">
+        {% for game in end_games %}
+        <div class="end_game__container">
+            <span>{{game.attack.attack_user.username}}<p>VS</p>{{game.defense.defense_user.username}}</span>
+            {% if game.victory_user == current_user.username %}
+            <h3>결과:: 승리</h3>
+            {% else %}
+            <h3>결과:: 패배</h3>
+            {% endif %}
+            <a href="#">게임 정보</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
