@@ -3,9 +3,7 @@ from .models import *
 
 # Create your views here.
 def list_game(request):
-    print(request.user.username)
     if request.user.is_authenticated:
-        print('user is authenticated')
         # 현재 로그인한 유저가 속하는 게임들
         end_attack_games = CardGame.objects.filter(attack__attack_user__username = request.user.username, status='끝')
         proceed_attack_games = CardGame.objects.filter(attack__attack_user__username = request.user.username, status='진행중')
@@ -19,7 +17,6 @@ def list_game(request):
             'end_games' : end_games,
             'proceed_games' : proceed_games,
             'current_user' : request.user,
-            # 'result' : result,
         }
         return render(request, 'list_game.html', context=ctx)
 
@@ -31,7 +28,10 @@ def delete_game(request, pk):
 
 def user_ranking(request):
     users = User.objects.all().order_by('-point')
+    user_num = User.objects.count
+    print(user_num)
     ctx = {
-        'users' : users
+        'users' : users,
+        'user_num' : user_num
     }
     return render(request, 'user_ranking.html', context= ctx)
