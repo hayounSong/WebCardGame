@@ -29,4 +29,3 @@ class CardGame(models.Model):
     status = models.CharField(max_length=20) ## 진행중(attack, defense 다 있는데, defense.num은 NULL) or 끝난거 (denfense.num이 값을 가짐)
     attack = models.OneToOneField(Attack, on_delete=models.CASCADE)
     defense = models.OneToOneField(Defense, on_delete=models.CASCADE)
-
