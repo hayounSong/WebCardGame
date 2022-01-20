@@ -33,3 +33,4 @@ class CardGame(models.Model):
     attack = models.OneToOneField(Attack, on_delete=models.CASCADE)
     defense = models.OneToOneField(Defense, on_delete=models.CASCADE)
     victory_user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    

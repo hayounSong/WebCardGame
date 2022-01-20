@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="detail">
+
+    <span>{{game.attack.attack_user}}vs{{game.defense.defense_user}}</span><br>
+    <span>{{game.mode}}를 가진 사람이 이깁니다!</span><br>
+    
+    <span>{{game.attack.attack_user}} : {{game.attack.num}}</span><br>
+    <span>{{game.defense.defense_user}} : {{game.defense.num}}</span><br>
+  
+    {% if game.victory_user.username == current_user.username %}
+    <span> 결과: 승리!</span><br>
+    {% if game.attack.attack_user.username == current_user.username %}
+    <span>점수: + {{game.attack.num}}</span>
+    {% elif game.defense.defense_user.username == current_user.username %} 
+    <span>점수: + {{game.defense.num}}</span>
+    {% endif %}
+   
+    {% else %}
+    <span> 결과: 패배..</span><br>
+    {% if game.attack.attack_user.username == current_user.username %}
+    <span>점수: - {{game.attack.num}}</span>
+    {% elif game.defense.defense_user.username == current_user.username %} 
+    <span>점수: - {{game.defense.num}}</span>
+    {% endif %}
+    {% endif %}
+    <a href="{% url 'cardgame:list_game' %}"><button>전적 목록</button></a><br>
+
+</div>
+
+
+{% endblock %}
