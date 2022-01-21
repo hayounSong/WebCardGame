@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="form__container">
-    <form method="POST">
+    <form method="POST" style="color: white;">
         {% csrf_token %}
         {{form.as_table}}
         <button type="submit">저장</button>

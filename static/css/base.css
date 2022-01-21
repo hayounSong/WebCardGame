@@ -1,3 +1,8 @@
+body {
+    background: linear-gradient(black, #242224);
+    height: 100vh;
+}
+
 nav {
     background-color: black;
     padding-left: 1rem;

@@ -38,6 +38,7 @@ def list_game(request):
             'end_games': end_games,
             'proceed_games': proceed_games,
             'current_user': request.user,
+            'count' : 1,
         }
         return render(request, 'list_game.html', context=ctx)
 
