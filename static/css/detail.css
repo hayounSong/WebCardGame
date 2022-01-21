@@ -1,0 +1,52 @@
+.detail{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    color:white;
+    
+    background: linear-gradient(black, #242224);
+    height: 100vh;
+}
+.attdef{
+    
+    display:flex;
+    
+}
+
+.body{
+    background-color: black;
+}
+.card{
+    background-color: black!important;
+    margin-left: 70px;
+    margin-right:70px;
+    margin-top:10px;
+    text-align: center;
+}
+
+.card-header{
+    font-size: 25px;
+    font-weight: bold;
+}
+#source{
+    display: flex;
+    flex-direction: column;
+    width:500px;    
+    text-align: center;
+}
+.status{
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.progress{
+    margin-bottom: 20px;
+}
+.card-title{
+    color:rgb(255,187,0);
+    font-size:25px;
+    font-weight: bold;
+}
