@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="users__container">
+    <h2>Piro 명예의 전당</h2>
+    {% for user in users %}
+    <div class="user__container">
+        <h3>{{user.username}}</h3>
+        <h3>{{user.point}}</h3>
+    </div>
+    {% endfor %}
+    <a href="{% url 'cardgame:list_game' %}">전적 목록</a>
+</div>
+{% endblock%}
