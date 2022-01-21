@@ -28,7 +28,7 @@
 }
 
 .card-header{
-    font-size: 25px;
+    font-size: 50px;
     font-weight: bold;
 }
 #source{
@@ -39,7 +39,7 @@
 }
 .status{
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
 }
 .progress{
@@ -47,6 +47,32 @@
 }
 .card-title{
     color:rgb(255,187,0);
-    font-size:25px;
+    font-size:50px;
     font-weight: bold;
+    margin:-10px;
+}
+
+.card-text{
+
+    font-size:22px;
+    margin:-10px;
+}
+
+.card button{
+    margin-top:20px;
+    font-size: 20px;
+    width:70px;
+}
+
+.buttonarea{
+    font-size: 23px!important;
+
+}
+
+a button{
+    font-size: 25px!important;
+}
+
+.text{
+    font-size:25px;
 }
