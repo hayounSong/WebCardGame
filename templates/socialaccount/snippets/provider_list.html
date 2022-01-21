@@ -10,12 +10,12 @@
      href="{% provider_login_url provider.id openid=brand.openid_url process=process %}"
      >
      <img src="../../../static/src/{{provider.id}}.png" height="15px">
-     <div class="pt-1">{{provider.name}} 로그인</div></a>
+     <div>{{provider.name}} 로그인</div></a>
 {% endfor %}
 {% endif %}
 
 <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} btn" 
      href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
      <img src="../../../static/src/{{provider.id}}.png" height="40px">
-     <div class="pt-1">{{provider.name}} 로그인</div></a>
+     <div>{{provider.name}} 로그인</div></a>
 {% endfor %}
