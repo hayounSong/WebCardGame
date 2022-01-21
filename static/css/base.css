@@ -1,0 +1,15 @@
+nav {
+    background-color: black;
+    padding-left: 1rem;
+}
+
+nav a,
+nav .nav-link {
+    color : rgb(255, 187, 0);
+    font-weight: bold;
+}
+
+nav .nav-link:hover,
+nav a:hover {
+    color : white;
+}

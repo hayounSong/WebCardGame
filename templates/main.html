@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
 {% block content %}
-<img src="{% static 'src/main.png' %}" style="width: 50vh;">
-<h1>전 세계 피로그래머와 한 판 승부 숫자카드게임</h1>
-{% if request.user.is_authenticated %}
-<h3>{{request.user}} 님이 로그인 중</h3>
-<a href="#">게임하기</a>
-<a href="{% url 'cardgame:list_game'%}">전적보기</a>
-{% else %}
-<a href="{% url 'cardgame:login'%}">게임하기</a>
-{% endif %}
+<div class="main__container">
+    <img src="{% static 'src/main.png' %}">
+    <div class="title__container">
+        <h3>전 세계 피로그래머와 한 판 승부</h3>
+        <h1> PIROGRAM CARDGAME</h1>
+    </div>  
+    {% if request.user.is_authenticated %}
+    <h5>{{request.user}} 님이 로그인 중</h5>
+    <div class="nav-button__container">
+        <a href="{% url 'cardgame:attack_game' %}">게임하기</a>
+        <a href="{% url 'cardgame:list_game'%}">전적보기</a>
+    </div>
+    {% else %}
+    <a href="{% url 'cardgame:login'%}">게임하기</a>
+    {% endif %}
+</div>
 {% endblock%}
