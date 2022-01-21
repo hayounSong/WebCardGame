@@ -1,7 +1,23 @@
 .detail{
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.socialaccount_provider {
+    width: 100%;
+    object-fit: fill;
+    border: 1px solid rgb(255, 187, 0);;
+    display: flex;
+    padding: 1px;
+    margin-bottom: 10px;
+    align-items: center;
+
+}
+
+.socialaccount_provider div {
+    height: 100%;
+    margin: auto;
+}
+

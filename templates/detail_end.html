@@ -1,32 +1,88 @@
 {% extends 'base.html' %}
-{% block content %}
-<div class="detail">
+{% load static %}
 
-    <span>{{game.attack.attack_user}}vs{{game.defense.defense_user}}</span><br>
-    <span>{{game.mode}}를 가진 사람이 이깁니다!</span><br>
-    
-    <span>{{game.attack.attack_user}} : {{game.attack.num}}</span><br>
-    <span>{{game.defense.defense_user}} : {{game.defense.num}}</span><br>
-  
-    {% if game.victory_user.username == current_user.username %}
-    <span> 결과: 승리!</span><br>
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+
+<div class="detail">
+    <span style="font-size: 30px;font-weight: bold;color:rgb(255,187,0)">{{game.mode}}</span><span style="font-size:16px;">를 가진 사람이 이깁니다!</span><br><br>
+    <div class="attdef">
+    <div class="card border-warning mb-3" style="width: 22rem; height: 33rem;">
+        {% if game.victory_user.username == game.attack.attack_user.username %}
+            <span class="card-header" style="color:firebrick" > WIN!</span>
+            <div>
+                <img src="{% static 'src/win.png' %}" width=320 height=300 style="margin-left:15px" />
+              </div>
+            {% else %}
+            <span class="card-header" style="color:dodgerblue" > DEFEAT</span>
+            <div>
+                <img src="{% static 'src/lose.png' %}" width=320 height=300 style="margin-left:20px" />
+              </div>
+            {%endif%}
+        <div class="card-body">
+          <h5 class="card-title">{{game.attack.attack_user}}</h5>
+          <p class="card-text">
+              {{game.attack.attack_user}}이 공격했습니다!<br>
+              {{game.attack.attack_user}}은 숫자 {{game.attack.num}}을 골랐습니다!</p>
+              <button type="button" class="btn btn-outline-danger">More</button>
+        </div>
+      </div>
+
+      <div class="card border-warning mb-3" style="width: 22rem;height: 33rem;">
+        {% if game.victory_user.username == game.defense.defense_user.username %}
+        <span class="card-header" style="color:firebrick" > WIN!</span>
+        <div>
+            <img src="{% static 'src/win.png' %}" width=320 height=300 style="margin-left:15px" />
+          </div>
+        {% else %}
+        <span class="card-header" style="color:dodgerblue"  > DEFEAT</span>
+        <div>
+            <img src="{% static 'src/lose.png' %}" width=320 height=300 style="margin-left:20px" />
+          </div>
+        {%endif%}
+        <div class="card-body">
+          <h5 class="card-title">{{game.defense.defense_user}}</h5>
+          <p class="card-text">{{game.defense.defense_user}}가 방어했습니다!<br>
+            {{game.defense.defense_user}}은 숫자 {{game.defense.num}}을 골랐습니다!
+        </p>
+        <button type="button" class="btn btn-outline-primary">More</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="source" style="background: none!important;">
+        <span class="status">현재 게임은 {{game.status}}났습니다!</span>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 100%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+       
+        {% if game.victory_user.username == current_user.username %}
+        {{current_user.username}}의 결과는 <span style="font-size: 20px;font-weight: bold;color:firebrick" >승리!</span>
     {% if game.attack.attack_user.username == current_user.username %}
-    <span>점수: + {{game.attack.num}}</span>
+    <span>이번 게임에서 <span style="color:rgb(255,187,0)">{{game.attack.num}}</span>점을 얻었습니다</span>
     {% elif game.defense.defense_user.username == current_user.username %} 
-    <span>점수: + {{game.defense.num}}</span>
+    <span>이번 게임에서 <span style="color:rgb(255,187,0)">{{game.defense.num}}</span>점을 얻었습니다</span>
     {% endif %}
    
     {% else %}
-    <span> 결과: 패배..</span><br>
+    {{current_user.username}}의 결과는 <span span style="font-size: 20px;font-weight: bold;color:dodgerblue;"> 패배!</span>
     {% if game.attack.attack_user.username == current_user.username %}
-    <span>점수: - {{game.attack.num}}</span>
+    <span>이번 게임에서 <span style="color:rgb(255,187,0)">{{game.attack.num}}</span>점을 잃었습니다</span>
     {% elif game.defense.defense_user.username == current_user.username %} 
-    <span>점수: - {{game.defense.num}}</span>
+    <span>이번 게임에서 <span style="color:rgb(255,187,0)">{{game.defense.num}}</span>점을 잃었습니다</span><br>
     {% endif %}
     {% endif %}
-    <a href="{% url 'cardgame:list_game' %}"><button>전적 목록</button></a><br>
-
+    <div>
+    <a href="{% url 'cardgame:list_game' %}"><button type="button" class="btn btn-outline-success">전적목록</button></a>
 </div>
+    </div>
+</div>
+    
+    
+    
+    
+    
 
+    
 
 {% endblock %}

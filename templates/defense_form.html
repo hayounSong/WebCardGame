@@ -13,12 +13,12 @@
         {% csrf_token %}
         <div class="attack__text"><span class="fw-bolder text-uppercase">{{ attack }}</span><span>님에게 반격하세요!</span></div>
         <table class="form_table">
-            <div class="fw-bolder">
+            <div class="fw-bolder fs-3">
                 {{ form.as_p }}
             </div>
         </table>
         <div class="button__container save_button text-center mt-3">
-            <input class="submit border border-2 rounded border-dark fw-bolder" type="submit" value='반격하기!'>
+            <input class="submit border border-2 rounded border-dark fw-bolder fs-3" type="submit" value='반격하기!'>
         </div>    
     </form>
 </div>

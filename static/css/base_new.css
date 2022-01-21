@@ -1,6 +1,9 @@
+@import url(login.css);
+
 body {
-  background: linear-gradient(black, #242224);
-  height: 100vh;
+    background: linear-gradient(black, #242224);
+    height: 100vh;
+    font-family: 'Cute Font';
 }
 
 nav {
@@ -10,10 +13,10 @@ nav {
 
 nav a,
 nav .nav-link {
-  color: rgb(255, 187, 0);
-  font-weight: bold;
+    color : rgb(255, 187, 0);
+    font-weight: bold;
+    font-size: 2rem!important;
 }
-
 nav .nav-link:hover,
 nav a:hover {
   color: white;
