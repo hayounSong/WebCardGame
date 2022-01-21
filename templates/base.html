@@ -16,7 +16,7 @@
         {% if request.user.is_authenticated%}
         <ul class="nav nav-pills">
             <li class="nav-item">
-            <a class="nav-link" href="#">게임하기</a>
+            <a class="nav-link" href="{% url 'cardgame:attack_game' %}">게임하기</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="{% url 'cardgame:user_ranking' %}">랭킹보기</a>
@@ -36,7 +36,7 @@
         </ul>
         {% endif %}
         {% endblock %}
-      </nav>
+    </nav>
     {% block content %}
     {% endblock %}
 </body>
