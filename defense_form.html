@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static%}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/defense_form.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form__container d-flex justify-content-center align-items-center">
+    <form action="" method='POST' class="d-flex flex-column justify-content-center align-items-center border border-2 border-dark rounded" style="width:300px; height: 200px" >
+        {% csrf_token %}
+        <div class="attack__text"><span class="fw-bolder">{{ attack }}<span>에게 반격하세요!</span></div>
+        <table class="form_table">
+            <div class="fw-bolder">
+                {{ form.as_p }}
+            </div>
+        </table>
+        <div class="button__container save_button text-center mt-3">
+            <input class="submit border border-2 rounded border-dark fw-bolder" type="submit" value='반격하기!'>
+        </div>    
+    </form>
+</div>
+{% endblock %}
