@@ -78,5 +78,6 @@ def attack_game(request):
 
     else:
         form = AttackForm()
-        print()
+        form.fields['defense_user'].queryset = User.objects.exclude(
+            id=request.user.id)
         return render(request, 'attack_form.html', locals())
