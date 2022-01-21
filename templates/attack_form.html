@@ -11,12 +11,12 @@
         {% csrf_token %}
         <table class="form_table ">
             <div class="">
-                <div><span class="fw-bolder me-2" style="color: white;">내가 고른 카드:</span><span>{{ form.attack_num }}</span></div>
-                <div class="mt-2 fw-bolder"><span class=" me-2" style="color: white;">공격할 상대는?</span><span>{{ form.defense_user }}</span></div>
+                <div><span class="fw-bolder me-2 fs-3" style="color: white;">내가 고른 카드:</span><span>{{ form.attack_num }}</span></div>
+                <div class="mt-2 fw-bolder"><span class=" me-2 fs-3" style="color: white;">공격할 상대는?</span><span>{{ form.defense_user }}</span></div>
             </div>
         </table>
         <div class="button__container save_button text-center mt-3">
-            <input class="submit border border-2 rounded border-dark fw-bolder" type="submit" value='공격하기!'>
+            <input class="submit border border-2 rounded border-dark fw-bolder fs-3" type="submit" value='공격하기!'>
         </div>
     </form>
 </div>

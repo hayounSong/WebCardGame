@@ -10,15 +10,15 @@
         {% for game in proceed_games %}
         <div class="proceed_game__container">
             <div class="users">
-                <h5>{{game.attack.attack_user.username}}<span>VS</span>{{game.defense.defense_user.username}}</h5>
+                <h5 class="fs-3">{{game.attack.attack_user.username}}<span>VS</span>{{game.defense.defense_user.username}}</h5>
             </div>
             <div class="game_buttons game_info">
                 {% if game.attack.attack_user.username == current_user.username %}
-                <a href="{% url 'cardgame:delete_game' pk=game.id%}">공격 취소</a>
+                <a class="fs-3" href="{% url 'cardgame:delete_game' pk=game.id%}">공격 취소</a>
                 {% elif game.defense.defense_user.username == current_user.username %}
-                <a href="{% url 'cardgame:game_defense' pk=game.id%}">반격하기</a>
+                <a class="fs-3" href="{% url 'cardgame:game_defense' pk=game.id%}">반격하기</a>
                 {% endif %}
-                <a href="{% url 'cardgame:detail_game' pk=game.id%}">게임 정보</a>
+                <a class="fs-3" href="{% url 'cardgame:detail_game' pk=game.id%}">게임 정보</a>
             </div>
         </div>
         {% endfor %}
@@ -28,15 +28,15 @@
         {% for game in end_games %}
         <div class="end_game__container">
             <div class="users">
-                <h5>{{game.attack.attack_user.username}}<span>VS</span>{{game.defense.defense_user.username}}</h5>
+                <h5 class="fs-3">{{game.attack.attack_user.username}}<span>VS</span>{{game.defense.defense_user.username}}</h5>
             </div>
             <div class="game_buttons game_info">
                 {% if game.victory_user.username == current_user.username %}
-                <h5>승리!</h5>
+                <h5 class="fs-3">승리!</h5>
                 {% else %}
-                <h5>패배..</h5>
+                <h5 class="fs-3">패배..</h5>
                 {% endif %}
-                <a href="{% url 'cardgame:detail_game' pk=game.id%}">게임 정보</a>
+                <a class="fs-3" href="{% url 'cardgame:detail_game' pk=game.id%}">게임 정보</a>
             </div>
         </div>
         {% endfor %}
