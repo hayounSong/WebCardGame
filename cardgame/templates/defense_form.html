@@ -1,0 +1,11 @@
+{% block content %}
+
+<h3>{{ attack }}<span>에게 반격하세요!</span></h3>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="반격하기!" />
+</form>
+
+{% endblock %}
