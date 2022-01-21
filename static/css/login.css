@@ -1,0 +1,50 @@
+main {
+    margin: auto;
+}
+<<<<<<< HEAD
+
+=======
+>>>>>>> 94057e79a4925cbf4afff5d3c0edba0e6886f854
+ul.socialaccount_providers {
+    list-style: none;
+    width: 200px;
+}
+
+.socialaccount_provider {
+    width: 300px;
+    object-fit: fill;
+    display: flex;
+    padding: 1.5px;
+    margin-bottom: 10px;
+    align-items: center; 
+    background-color: #48484B;
+}
+
+.socialaccount_provider div {
+    height: 100%;
+    margin: auto;
+    color: white;
+}
+
+.socialaccount_provider.google > img {
+    height: 30px;
+    margin: 5px;
+}
+
+form input {
+    margin-bottom: 10px;
+}
+
+form.signup {
+    width: 300px;
+}
+
+h3 {
+    color: rgb(255, 187, 0);
+}
+
+
+.login__btn:hover{
+    color: rgb(255, 187, 0);
+    background-color: #242224;
+}

@@ -1,21 +1,100 @@
 {% extends 'base.html' %}
-{% block content %}
-<div class="detail">
+{% load static %}
 
-    <span>{{game.attack.attack_user}}vs{{game.defense.defense_user}}</span><br>
+
+{% block content %}
+
+<div class="detail">
+    <div class="attdef">
+       
+
+
+    <div class="card border-warning mb-3" style="max-width: 20rem; max-height: 33rem;">
+        <div class="card-header" style="color:crimson">
+          ATTACK!
+        </div>
+        <img src="{% static 'src/attack.png' %}" width=300; />
+        <div class="card-body">
+          <h5 class="card-title">{{game.attack.attack_user}}</h5>
+          <p class="card-text">
+              {{game.attack.attack_user}}이 공격했습니다!<br>
+              {{game.attack.attack_user}}은 숫자 {{game.attack.num}}을 골랐습니다!</p>
+              <button type="button" id="btn-open-popup"  class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalwhite">More</button>
+        </div>
+      </div>
+
+      <div class="card border-warning mb-3" style="max-width: 20rem;max-height: 33rem;">
+        <div class="card-header" style="color:dodgerblue">
+          DEFENSE!
+        </div>
+        <img src="{% static 'src/defense.png' %}" alt="" width=300;/>
+        <div class="card-body">
+          <h5 class="card-title">{{game.defense.defense_user}}</h5>
+          <p class="card-text">{{game.defense.defense_user}}가 방어합니다!<br>
+            {{game.defense.defense_user}}은 숫자를 고르지 않았습니다.
+        </p>
+        <button type="button" id="sbtn-open-popup" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalwhite">More</button>
+        </div>
+      </div>
+    </div>
+
+  
     
+    <div id="source" style="background: none!important;">
     {% if game.attack.attack_user.username == current_user.username %}
-    <span>{{game.status}}...</span>
-    <span>나:{{game.attack.num}}</span>
-    <a href="{% url 'cardgame:delete_game' pk=game.id%}"><button>게임 취소</button></a>
+    <span class="status">현재 게임은 {{game.status}}...</span>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    <div class="buttonarea">
+    <a href="{% url 'cardgame:delete_game' pk=game.id%}"><button type="button" class="btn btn-outline-warning">게임 취소</button></a>
     {% elif game.defense.defense_user.username == current_user.username %}
-    
-    <a href="{% url 'cardgame:game_defense' pk=game.id%}"><button>대응하기</button></a>
+    <span class="status">현재 게임은 {{game.status}}...</span>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    <div class="buttonarea">
+    <a href="{% url 'cardgame:game_defense' pk=game.id%}"><button type="button" class="btn btn-outline-warning">대응하기</button></a>
     {% endif %}
 
  
-    <a href="{% url 'cardgame:list_game' %}"><button>전적 목록</button></a>
+    <a href="{% url 'cardgame:list_game' %}"><button type="button" class="btn btn-outline-success">전적목록</button></a>
+</div>
+</div>
+
 </div>
 
 
+  
+    <div class="modal" id="modalwhite">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">게임 힌트</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>숫자가 무조건 크다고 좋은게 아닐수도?</p>
+            </div>
+            <div class="modal-footer">
+              
+              <button type="button" id="btn_close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </div>
+
+
+  <script>
+    const modal = document.querySelector('.modal'); 
+  const btnOpenPopup = document.querySelector('#btn-open-popup');
+  const btnClose=document.querySelector('#btn_close') 
+  btnOpenPopup.addEventListener('click', () => { modal.style.display = 'block'; });
+  btnClose.addEventListener('click', () => { modal.style.display = 'none'; });  
+ </script>
+ 
 {% endblock %}

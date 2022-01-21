@@ -1,0 +1,29 @@
+@import url(login.css);
+
+body {
+    background: linear-gradient(black, #242224);
+    height: 100vh;
+    font-family: 'Cute Font';
+}
+
+nav {
+  background-color: black;
+  padding-left: 1rem;
+}
+
+nav a,
+nav .nav-link {
+    color : rgb(255, 187, 0);
+    font-weight: bold;
+    font-size: 2rem!important;
+}
+nav .nav-link:hover,
+nav a:hover {
+  color: white;
+}
+
+.battle-img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 1rem;
+}

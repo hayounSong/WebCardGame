@@ -1,0 +1,63 @@
+img {
+    padding-bottom: 10px;
+}
+.main__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5rem;
+    color: white;
+}
+
+.title__container {
+    text-align: center;
+    padding-bottom: 10px;
+    width: 100vh;
+}
+
+.title__container h3 {
+    margin: 0;
+    font-size: 2rem;
+    margin-bottom: -15px;
+}
+.title__container h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    padding: 0;
+    margin-bottom: -10px;
+    color:rgb(255, 187, 0);
+    text-shadow: 5px 5px rgb(78, 78, 78);
+
+}
+.title__container h5 {
+    font-size: 1.5rem;
+}
+.title__container h5 span {
+    color:rgb(255, 187, 0);
+    text-shadow: 2px 2px rgb(78, 78, 78);
+}
+
+.nav-button__container {
+    padding-top: 2rem;
+    display: flex;
+    gap: 2rem;
+    font-size: 2rem;
+    justify-content: center;
+}
+
+.nav-button__container a {
+    text-decoration: none;
+    border : 2px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    color: black;
+    padding: 0 5px;
+    font-weight: bold;
+    background-color: white;
+}
+
+.nav-button__container a:hover {
+    background-color: rgb(36, 36, 36);
+    color: rgb(255, 187, 0);
+    border-color: rgb(36, 36, 36);
+}

@@ -38,6 +38,7 @@ def list_game(request):
             'end_games': end_games,
             'proceed_games': proceed_games,
             'current_user': request.user,
+            'count' : 1,
         }
         return render(request, 'list_game.html', context=ctx)
 
@@ -77,11 +78,12 @@ def delete_game(request, pk):
 
 def user_ranking(request):
     users = User.objects.all().order_by('-point')
-    user_num = User.objects.count
-    print(user_num)
+    user_num = list(range(1,User.objects.count()+1))
+    user_list = zip(users, user_num)
+    print(user_list)
     ctx = {
         'users': users,
-        'user_num': user_num
+        'user_list' : user_list
     }
     return render(request, 'user_ranking.html', context= ctx)
 
@@ -153,3 +155,8 @@ def detail_game(request,pk):
         'current_user':request.user
        }
         return render(request,template_name='detail_progress.html',context=ctx)
+
+
+def profile(request):
+    
+    return redirect('cardgame:main')
