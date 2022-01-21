@@ -1,31 +1,43 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/list_game.css' %}">
+{% endblock %}
 {% block content %}
 <div class="games__container">
-    <h2>::진행중인 게임</h2>
     <div class="proceed_games__container">
+        <h2>[ 진행중인 게임 ]</h2>
         {% for game in proceed_games %}
         <div class="proceed_game__container">
-            <span>{{game.attack.attack_user.username}}<p>VS</p>{{game.defense.defense_user.username}}</span>
-            {% if game.attack.attack_user.username == current_user.username %}
-            <a href="{% url 'cardgame:delete_game' pk=game.id%}">공격 취소</a>
-            {% elif game.defense.defense_user.username == current_user.username %}
-            <a href="{% url 'cardgame:game_defense' pk=game.id%}">반격하기</a>
-            {% endif %}
-            <a href="{% url 'cardgame:detail_game' pk=game.id%}">게임 정보</a>
+            <div class="users">
+                <h5>{{game.attack.attack_user.username}}<span>VS</span>{{game.defense.defense_user.username}}</h5>
+            </div>
+            <div class="game_buttons game_info">
+                {% if game.attack.attack_user.username == current_user.username %}
+                <a href="{% url 'cardgame:delete_game' pk=game.id%}">공격 취소</a>
+                {% elif game.defense.defense_user.username == current_user.username %}
+                <a href="{% url 'cardgame:game_defense' pk=game.id%}">반격하기</a>
+                {% endif %}
+                <a href="{% url 'cardgame:detail_game' pk=game.id%}">게임 정보</a>
+            </div>
         </div>
         {% endfor %}
     </div>
-    <h2>:: 게임 전적</h2>
     <div class="end_games__container">
+        <h2>[ 게임 전적 ]</h2>
         {% for game in end_games %}
         <div class="end_game__container">
-            <span>{{game.attack.attack_user.username}}<p>VS</p>{{game.defense.defense_user.username}}</span>
-            {% if game.victory_user.username == current_user.username %}
-            <h3>결과:: 승리</h3>
-            {% else %}
-            <h3>결과:: 패배</h3>
-            {% endif %}
-            <a href="{% url 'cardgame:detail_game' pk=game.id%}">게임 정보</a>
+            <div class="users">
+                <h5>{{game.attack.attack_user.username}}<span>VS</span>{{game.defense.defense_user.username}}</h5>
+            </div>
+            <div class="game_buttons game_info">
+                {% if game.victory_user.username == current_user.username %}
+                <h5>승리!</h5>
+                {% else %}
+                <h5>패배..</h5>
+                {% endif %}
+                <a href="{% url 'cardgame:detail_game' pk=game.id%}">게임 정보</a>
+            </div>
         </div>
         {% endfor %}
     </div>

@@ -1,0 +1,90 @@
+.games__container {
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-top: 5rem;
+}
+.users h5 {
+    font-size: 15px;
+}
+
+.users h5 span {
+    padding: 0 0.5rem;
+    color: rgb(255, 187, 0);
+}
+
+.proceed_games__container {
+    display: flex;
+    width: 100vh;
+    flex-direction: column;
+    text-align: center;
+    border: 2px solid rgb(255, 187, 0);
+    margin: 0 5rem;
+    padding: 1rem 5rem;
+    gap: 1rem;
+}
+
+.proceed_games__container h2 {
+    color: white;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgb(255, 187, 0);
+}
+
+.proceed_game__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.end_games__container {
+    display: flex;
+    width: 100vh;
+    flex-direction: column;
+    text-align: center;
+    border: 2px solid rgb(255, 187, 0);
+    margin: 0 5rem;
+    padding: 1rem 5rem;
+    gap: 1rem;
+}
+
+.end_games__container h2 {
+    color: white;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgb(255, 187, 0);
+}
+
+.end_game__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.game_buttons a {
+    font-size: 12px;
+    text-decoration: none;
+    border : 2px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    color: black;
+    padding: 0 5px;
+    font-weight: bold;
+    background-color: white;
+}
+
+.game_buttons a:hover {
+    background-color: rgb(36, 36, 36);
+    color: rgb(255, 187, 0);
+    border-color: rgb(36, 36, 36);
+}
+
+.game_info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.game_info h5 {
+    font-size: 15px;
+    margin: 0;
+    color: rgb(255, 187, 0);
+    font-weight: bold;
+    text-shadow: 1px 1px rgb(36, 36, 36);
+}
