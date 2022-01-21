@@ -15,7 +15,7 @@
 <div class="main__container" id="wrapper">
     <img src="{% static 'src/main-bg.png' %}" style="width:56vh; padding-bottom: 2rem;" alt="">
     <div class="title__container">
-        <h3>전 세계 피로그래머와 한 판 승부!</h3>
+        <h3 style="color: white;">전 세계 피로그래머와 한 판 승부!</h3>
         <h1> PIROGRAM CARDGAME</h1>
         {% if request.user.is_authenticated %}
         <h5><span>{{request.user}}</span> 님이 로그인 중</h5>

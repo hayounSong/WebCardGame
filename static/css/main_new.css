@@ -39,10 +39,11 @@ img {
 }
 
 .nav-button__container {
-    padding-top: 10px;
+    padding-top: 2rem;
     display: flex;
     gap: 2rem;
     font-size: 2rem;
+    justify-content: center;
 }
 
 .nav-button__container a {
