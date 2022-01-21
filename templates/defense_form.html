@@ -11,7 +11,7 @@
     <img class="battle-img" src="/static/src/attack-game.png" alt="">
     <form action="" method='POST' class="d-flex flex-column justify-content-center align-items-center border border-2 border-light rounded" style="width:300px; height: 200px; color:white" >
         {% csrf_token %}
-        <div class="attack__text"><span class="fw-bolder text-uppercase">{{ attack }}</span><span>님에게 반격하세요!</span></div>
+        <div class="attack__text"><span class="fw-bolder fs-3" style="color: rgb(255, 187, 0);">{{ attack }}</span><span class="fs-3"> 님에게 반격하세요!</span></div>
         <table class="form_table">
             <div class="fw-bolder fs-3">
                 {{ form.as_p }}
@@ -23,3 +23,4 @@
     </form>
 </div>
 {% endblock %}
+
