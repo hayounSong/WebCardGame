@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .form import *
 import random
+
 
 # Create your views here.
 
@@ -81,3 +82,17 @@ def attack_game(request):
         form.fields['defense_user'].queryset = User.objects.exclude(
             id=request.user.id)
         return render(request, 'attack_form.html', locals())
+
+def detail_game(request,pk):
+    game=get_object_or_404(CardGame,id=pk)
+    
+    if game.status=="끝":
+        ctx={'game':game,
+        'current_user':request.user
+        }
+        return render(request,template_name='detail_end.html',context=ctx)
+    if game.status=="진행중":
+        ctx={'game':game,
+        'current_user':request.user
+       }
+        return render(request,template_name='detail_progress.html',context=ctx)
