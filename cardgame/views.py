@@ -41,6 +41,33 @@ def list_game(request):
         }
         return render(request, 'list_game.html', context=ctx)
 
+def attack_game(request):
+    if request.method == 'POST':
+        game = CardGame()
+        game.mode = random.choice(['큰 수', '작은 수'])
+        game.status = '진행중'
+
+        attack = Attack()
+        attack.attack_user = User.objects.get(username=request.user)
+        attack.num = Card.objects.get(id=request.POST['attack_num'])
+        attack.save()
+
+        defense = Defense()
+        defense.defense_user = User.objects.get(
+            id=request.POST['defense_user'])
+        defense.save()
+
+        game.attack = attack
+        game.defense = defense
+        game.save()
+
+        return redirect('cardgame:list_game')
+
+    else:
+        form = AttackForm()
+        form.fields['defense_user'].queryset = User.objects.exclude(
+            id=request.user.id)
+        return render(request, 'attack_form.html', locals())
 
 def delete_game(request, pk):
     game = CardGame.objects.get(id=pk)
@@ -103,7 +130,7 @@ def game_defense(request, pk):
         game.victory_user, game.attack.attack_user.point, game.defense.defense_user.point = game_win(attack, defense, pk, game)
         game.save()
 
-        return redirect('cardgame:game_defense', game.pk)  # 반격하기 누르면 게임정보 띄워준다. game_detail로 바꾸기.
+        return redirect('cardgame:detail_game', game.pk)  # 반격하기 누르면 게임정보 띄워준다. game_detail로 바꾸기.
     
     else:
         form = DefenseForm()
