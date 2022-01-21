@@ -1,12 +1,5 @@
-
-.loader__container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.loader__container img {
-    height: 100vh;
+img {
+    padding-bottom: 10px;
 }
 .main__container {
     display: flex;
