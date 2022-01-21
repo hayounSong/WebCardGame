@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-center flex-column align-items-center mt-5 text-white">
     <h3>{% trans "회원가입" %}</h3>
 
-    <p class="mt-2">{% blocktrans %} 기존 회원이라면 > <a class="btn-sm btn-light ms-2" style="text-decoration: none;" href="{{ login_url }}">로그인</a>{% endblocktrans %}</p>
+    <p>{% blocktrans %} 기존 회원이라면 <span style="color: rgb(255, 187, 0);">></span> <a class="btn-sm btn-light ms-2" style="text-decoration: none; font-size: 1.5rem; font-weight: bold;" href="{{ login_url }}">로그인</a>{% endblocktrans %}</p>
 
     <form class="signup d-flex flex-column justify-content-center mt-3" id="signup_form" method="post" action="{% url 'account_signup' %}">
         {% csrf_token %}
@@ -16,7 +16,7 @@
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button type="submit" class="btn btn-light">{% trans "Sign Up" %} &raquo;</button>
+        <button type="submit" class="btn btn-light" style="font-size: 1.5rem; font-weight: bold;">{% trans "Sign Up" %} &raquo;</button>
     </form>
 </div>
 {% endblock %}

@@ -1,10 +1,6 @@
 main {
     margin: auto;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 94057e79a4925cbf4afff5d3c0edba0e6886f854
 ul.socialaccount_providers {
     list-style: none;
     width: 200px;
@@ -33,6 +29,7 @@ ul.socialaccount_providers {
 
 form input {
     margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 form.signup {
@@ -41,10 +38,18 @@ form.signup {
 
 h3 {
     color: rgb(255, 187, 0);
+    font-size: 3rem;
 }
 
-
+p {
+    font-size: 2rem;
+}
+.login__btn {
+    font-size: 1.5rem;
+    font-weight: bold;;
+}
 .login__btn:hover{
     color: rgb(255, 187, 0);
     background-color: #242224;
+    border: #242224;
 }
