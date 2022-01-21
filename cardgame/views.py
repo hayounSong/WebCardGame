@@ -81,7 +81,6 @@ def game_defense(request, pk):
         game.status = '끝'
         game.defense = defense
         game.victory_user, game.attack.attack_user.point, game.defense.defense_user.point = game_win(attack, defense, pk, game)
-        print(game.victory_user, game.attack.attack_user.point, game.defense.defense_user.point)
         game.save()
 
         return redirect('cardgame:game_defense', game.pk)  # 반격하기 누르면 게임정보 띄워준다. game_detail로 바꾸기.
