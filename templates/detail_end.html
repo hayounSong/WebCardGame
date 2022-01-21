@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/detail.css' %}">
 
 <div class="detail">
-    <span style="font-size: 30px;font-weight: bold;color:rgb(255,187,0)">{{game.mode}}</span><span style="font-size:16px;">를 가진 사람이 이깁니다!</span><br><br>
+    <span style="font-size: 50px;font-weight: bold;color:rgb(255,187,0)">{{game.mode}}</span><span style="font-size:20px;">를 가진 사람이 이깁니다!</span><br><br>
     <div class="attdef">
     <div class="card border-warning mb-3" style="width: 22rem; height: 35rem;">
         {% if game.victory_user.username == game.attack.attack_user.username %}
