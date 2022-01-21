@@ -153,3 +153,8 @@ def detail_game(request,pk):
         'current_user':request.user
        }
         return render(request,template_name='detail_progress.html',context=ctx)
+
+
+def profile(request):
+    
+    return redirect('cardgame:main')
