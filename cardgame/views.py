@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from cardgame.forms import DefenseForm
+from django.shortcuts import render, redirect, get_object_or_404
 
 from django.shortcuts import render, redirect
 from .models import *
@@ -54,36 +56,62 @@ def user_ranking(request):
         'users': users,
         'user_num': user_num
     }
-    return render(request, 'user_ranking.html', context=ctx)
+    return render(request, 'user_ranking.html', context= ctx)
 
 
-def attack_game(request):
-    if request.method == 'POST':
-        game = CardGame()
-        game.mode = random.choice(['큰 수', '작은 수'])
-        game.status = '진행중'
-
-        attack = Attack()
-        attack.attack_user = User.objects.get(username=request.user)
-        attack.num = Card.objects.get(id=request.POST['attack_num'])
-        attack.save()
-
-        defense = Defense()
-        defense.defense_user = User.objects.get(
-            id=request.POST['defense_user'])
-        defense.save()
-
-        game.attack = attack
-        game.defense = defense
-        game.save()
-
-        return redirect('cardgame:list_game')
+def game_win(attack, defense, pk, game):
+    
+    if game.mode == '큰 수':
+        if attack.num.card_num >= defense.num.card_num:
+            victory_user = attack.attack_user 
+            attack.attack_user.point += attack.num.card_num
+            defense.defense_user.point -= defense.num.card_num
+        
+        else:
+            victory_user = defense.defense_user
+            attack.attack_user.point -= attack.num.card_num
+            defense.defense_user.point += defense.num.card_num
 
     else:
-        form = AttackForm()
-        form.fields['defense_user'].queryset = User.objects.exclude(
-            id=request.user.id)
-        return render(request, 'attack_form.html', locals())
+        if attack.num.card_num <= defense.num.card_num:
+            victory_user = attack.attack_user
+            attack.attack_user.point += attack.num.card_num
+            defense.defense_user.point -= defense.num.card_num
+
+        else:
+            victory_user = defense.defense_user
+            attack.attack_user.point -= attack.num.card_num
+            defense.defense_user.point += defense.num.card_num
+
+    game.attack.attack_user.save()
+    game.defense.defense_user.save()
+
+    return [victory_user, attack.attack_user.point, defense.defense_user.point]
+
+    
+def game_defense(request, pk):
+    game = CardGame.objects.get(id = pk) 
+
+    if request.method == 'POST':
+        defense = game.defense
+        defense.num = Card.objects.get(id = request.POST['defense_num'])
+        defense.save()
+
+        attack = game.attack
+        game.status = '끝'
+        game.defense = defense
+        game.victory_user, game.attack.attack_user.point, game.defense.defense_user.point = game_win(attack, defense, pk, game)
+        game.save()
+
+        return redirect('cardgame:game_defense', game.pk)  # 반격하기 누르면 게임정보 띄워준다. game_detail로 바꾸기.
+    
+    else:
+        form = DefenseForm()
+        ctx = {
+            'form': form,
+            'attack': game.attack.attack_user.username,
+        }
+        return render(request, 'defense_form.html', context = ctx)
 
 def detail_game(request,pk):
     game=get_object_or_404(CardGame,id=pk)
