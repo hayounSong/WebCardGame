@@ -42,7 +42,6 @@ LOGIN_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.naver', #네이버 소셜로그인
     'allauth.socialaccount.providers.google', #구글 소셜로그인
-    'allauth.socialaccount.providers.kakao', #카카오 소셜로그인
     'allauth.socialaccount.providers.github', #깃헙 소셜로그인
 ]
 
@@ -73,7 +72,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

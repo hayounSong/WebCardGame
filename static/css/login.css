@@ -1,0 +1,36 @@
+main {
+    margin: auto;
+}
+ul.socialaccount_providers {
+    list-style: none;
+    width: 200px;
+}
+
+.socialaccount_provider {
+    width: 300px;
+    object-fit: fill;
+    display: flex;
+    padding: 1.5px;
+    margin-bottom: 10px;
+    align-items: center;
+    background-color: #48484B;
+}
+
+.socialaccount_provider div {
+    height: 100%;
+    margin: auto;
+    color: white;
+}
+
+.socialaccount_provider.google > img {
+    height: 30px;
+    margin: 5px;
+}
+
+form input {
+    margin-bottom: 10px;
+}
+
+form.signup {
+    width: 300px;
+}
