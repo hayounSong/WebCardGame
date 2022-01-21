@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-center align-items-center flex-column mt-5">
     <h3>{% trans "로그아웃" %}</h3>
 
-    <p>{% trans '정말 게임에서 로그아웃 하실건가요?' %}</p>
+    <p class="text-white">{% trans '정말 게임에서 로그아웃 하실건가요?' %}</p>
 
     <form method="post" action="{% url 'account_logout' %}">
     {% csrf_token %}
