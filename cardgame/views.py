@@ -78,11 +78,12 @@ def delete_game(request, pk):
 
 def user_ranking(request):
     users = User.objects.all().order_by('-point')
-    user_num = User.objects.count
-    print(user_num)
+    user_num = list(range(1,User.objects.count()+1))
+    user_list = zip(users, user_num)
+    print(user_list)
     ctx = {
         'users': users,
-        'user_num': user_num
+        'user_list' : user_list
     }
     return render(request, 'user_ranking.html', context= ctx)
 
