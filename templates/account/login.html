@@ -16,8 +16,8 @@
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
             <div class="d-flex justify-content-evenly">
-                <a class="button secondaryAction btn btn-light" style="text-decoration: none;" href="{% url 'account_reset_password' %}">{% trans "비밀번호 찾기" %}</a>
-                <button class="primaryAction btn btn-light ms-3" type="submit">{% trans "로그인" %}</button>
+                <a class="login__btn button secondaryAction btn btn-light" style="text-decoration: none;" href="{% url 'account_reset_password' %}">{% trans "비밀번호 찾기" %}</a>
+                <button class="login__btn primaryAction btn btn-light ms-3" type="submit">{% trans "로그인" %}</button>
             </div>
         </form>
     </div>
