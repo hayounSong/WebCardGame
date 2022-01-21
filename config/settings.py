@@ -30,6 +30,21 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+AUTHENTICATION_BACKENDS=[
+    'django.contrib.auth.backends.ModelBackend',#기본장고 유저
+    'allauth.account.auth_backends.AuthenticationBackend',#소셜로그인 인증체계
+]
+
+LOGIN_APPS = [
+    'django.contrib.sites', 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.naver', #네이버 소셜로그인
+    'allauth.socialaccount.providers.google', #구글 소셜로그인
+    'allauth.socialaccount.providers.kakao', #카카오 소셜로그인
+    'allauth.socialaccount.providers.github', #깃헙 소셜로그인
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,7 +54,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cardgame',
-]
+] + LOGIN_APPS
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

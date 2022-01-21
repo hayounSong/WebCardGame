@@ -7,6 +7,6 @@
 <a href="#">게임하기</a>
 <a href="{% url 'cardgame:list_game'%}">전적보기</a>
 {% else %}
-<a href="{% url 'cardgame:login'%}">게임하기</a>
+<a href="{% url 'account_login' %}">게임하기</a>
 {% endif %}
 {% endblock%}
