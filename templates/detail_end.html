@@ -24,7 +24,7 @@
           <p class="card-text">
               {{game.attack.attack_user}}이 공격했습니다!<br>
               {{game.attack.attack_user}}은 숫자 {{game.attack.num}}을 골랐습니다!</p>
-              <button type="button" class="btn btn-outline-danger">More</button>
+              <button type="button" id="btn-open-popup" class="btn btn-outline-danger"  data-bs-toggle="modal" data-bs-target="#modalwhite">More</button>
         </div>
       </div>
 
@@ -45,7 +45,7 @@
           <p class="card-text">{{game.defense.defense_user}}가 방어했습니다!<br>
             {{game.defense.defense_user}}은 숫자 {{game.defense.num}}을 골랐습니다!
         </p>
-        <button type="button" class="btn btn-outline-primary">More</button>
+        <button type="button" id="btn-open-popup" class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#modalwhite">More</button>
         </div>
       </div>
     </div>
@@ -78,11 +78,29 @@
     </div>
 </div>
     
-    
-    
-    
-    
+<div class="modal" id="modalwhite">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">게임 정보</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>이긴 사람은 그 숫자 만큼 점수를 얻고, 진 사람은 그 숫자 만큼 점수를 잃습니다.</p>
+        </div>
+        <div class="modal-footer">
+          
+          <button type="button" id="btn_close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    
+</div>
+
+
+
 
 {% endblock %}
