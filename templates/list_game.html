@@ -9,9 +9,9 @@
             {% if game.attack.attack_user.username == current_user.username %}
             <a href="{% url 'cardgame:delete_game' pk=game.id%}">공격 취소</a>
             {% elif game.defense.defense_user.username == current_user.username %}
-            <a href="#">반격하기</a>
+            <a href="{% url 'cardgame:game_defense' pk=game.id%}">반격하기</a>
             {% endif %}
-            <a href="#">게임 정보</a>
+            <a href="{% url 'cardgame:detail_game' pk=game.id%}">게임 정보</a>
         </div>
         {% endfor %}
     </div>
@@ -25,7 +25,7 @@
             {% else %}
             <h3>결과:: 패배</h3>
             {% endif %}
-            <a href="#">게임 정보</a>
+            <a href="{% url 'cardgame:detail_game' pk=game.id%}">게임 정보</a>
         </div>
         {% endfor %}
     </div>
