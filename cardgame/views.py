@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+
+from django.shortcuts import render, redirect
 from .models import *
 from .form import *
 import random
@@ -53,6 +55,35 @@ def user_ranking(request):
         'user_num': user_num
     }
     return render(request, 'user_ranking.html', context=ctx)
+
+
+def attack_game(request):
+    if request.method == 'POST':
+        game = CardGame()
+        game.mode = random.choice(['큰 수', '작은 수'])
+        game.status = '진행중'
+
+        attack = Attack()
+        attack.attack_user = User.objects.get(username=request.user)
+        attack.num = Card.objects.get(id=request.POST['attack_num'])
+        attack.save()
+
+        defense = Defense()
+        defense.defense_user = User.objects.get(
+            id=request.POST['defense_user'])
+        defense.save()
+
+        game.attack = attack
+        game.defense = defense
+        game.save()
+
+        return redirect('cardgame:list_game')
+
+    else:
+        form = AttackForm()
+        form.fields['defense_user'].queryset = User.objects.exclude(
+            id=request.user.id)
+        return render(request, 'attack_form.html', locals())
 
 def detail_game(request,pk):
     game=get_object_or_404(CardGame,id=pk)
