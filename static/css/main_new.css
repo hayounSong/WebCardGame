@@ -16,16 +16,33 @@ img {
     width: 100vh;
 }
 
+.title__container h3 {
+    margin: 0;
+    font-size: 2rem;
+    margin-bottom: -15px;
+}
 .title__container h1 {
+    font-size: 4rem;
     font-weight: bold;
     padding: 0;
+    margin-bottom: -10px;
+    color:rgb(255, 187, 0);
+    text-shadow: 5px 5px rgb(78, 78, 78);
+
+}
+.title__container h5 {
+    font-size: 1.5rem;
+}
+.title__container h5 span {
+    color:rgb(255, 187, 0);
+    text-shadow: 2px 2px rgb(78, 78, 78);
 }
 
 .nav-button__container {
     padding-top: 10px;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    gap: 2rem;
+    font-size: 2rem;
 }
 
 .nav-button__container a {
